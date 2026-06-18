@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heavy Haul Brothers | Junk & Metal Removal — Woodstock, NY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --bg:        #2B2520;
+    --bg-soft:   #352E27;
+    --canvas:    #F4EDE2;
+    --canvas-dim:#D8CDBC;
+    --rust:      #A8714A;
+    --rust-dark: #8A5A38;
+    --olive:     #5C6B4F;
+    --mustard:   #D9A441;
+    --steel:     #8C8579;
+    --steel-dark:#5A5650;
+    --line:      rgba(244,237,226,0.14);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--canvas);
+    font-family:'Inter', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Oswald', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    font-weight:700;
+    line-height:1.1;
+  }
+
+  .label{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  img{ max-width:100%; display:block; }
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .rule{
+    border:none;
+    border-top:3px solid var(--canvas);
+    width:100%;
+  }
+
+  .rule-thin{
+    border:none;
+    border-top:1px solid var(--line);
+    width:100%;
+  }
+
+  /* ---------- TOPBAR ---------- */
+  .topbar{
+    border-bottom:1px solid var(--line);
+    padding:18px 0;
+  }
+  .topbar .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+  }
+  .brand{
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
+    font-size:1.05rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+  .brand span{ color:var(--mustard); }
+  .topbar nav a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--canvas-dim);
+    margin-left:28px;
+  }
+  .topbar nav a:hover{ color:var(--mustard); }
+  .topbar nav{ display:flex; align-items:center; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 72px;
+    border-bottom:3px solid var(--canvas);
+    position:relative;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    color:var(--mustard);
+    margin-bottom:18px;
+    display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.2vw, 4.1rem);
+    margin-bottom:22px;
+  }
+  .hero h1 .accent{ color:var(--rust); }
+  .hero p.sub{
+    font-size:1.15rem;
+    color:var(--canvas-dim);
+    max-width:480px;
+    margin-bottom:34px;
+  }
+  .btn{
+    display:inline-block;
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    font-size:0.85rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:16px 30px;
+    border:2px solid var(--rust);
+    background:var(--rust);
+    color:var(--bg);
+    transition:background 0.15s ease, color 0.15s ease;
+    cursor:pointer;
+  }
+  .btn:hover{ background:transparent; color:var(--rust); }
+  .btn-outline{
+    background:transparent;
+    color:var(--canvas);
+    border:2px solid var(--canvas);
+  }
+  .btn-outline:hover{ background:var(--canvas); color:var(--bg); }
+
+  .hero-photo{
+    aspect-ratio:4/5;
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-photo img{ width:100%; height:100%; object-fit:cover; }
+  .img-placeholder{
+    text-align:center;
+    padding:24px;
+    color:var(--steel);
+  }
+  .img-placeholder .label{ color:var(--mustard); display:block; margin-bottom:8px; }
+  .img-placeholder p{ font-size:0.85rem; color:var(--steel); }
+
+  /* ---------- SECTION SHELL ---------- */
+  section.block{
+    padding:72px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .section-head{
+    margin-bottom:44px;
+  }
+  .section-head .label{ color:var(--mustard); margin-bottom:14px; display:block; }
+  .section-head h2{ font-size:clamp(1.8rem, 3vw, 2.4rem); }
+
+  /* ---------- WHO WE ARE ---------- */
+  .who-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:48px;
+    align-items:start;
+  }
+  .who-photo{
+    aspect-ratio:1/1;
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .who-photo img{ width:100%; height:100%; object-fit:cover; }
+  .who-text p{ color:var(--canvas-dim); margin-bottom:18px; max-width:560px; }
+  .who-text p:last-child{ margin-bottom:0; }
+  .who-text strong{ color:var(--canvas); }
+
+  /* ---------- SERVICES: WORK ORDER LINE ITEMS ---------- */
+  .ticket{
+    border:1px solid var(--line);
+    background:var(--bg-soft);
+    margin-bottom:18px;
+  }
+  .ticket-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 26px;
+    border-bottom:1px solid var(--line);
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .ticket-head h3{
+    font-size:1.3rem;
+    letter-spacing:0.01em;
+  }
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    padding:6px 12px;
+    border:1.5px solid currentColor;
+    white-space:nowrap;
+  }
+  .tag-rust{ color:var(--rust); }
+  .tag-olive{ color:var(--olive); }
+  .tag-mustard{ color:var(--mustard); }
+
+  .ticket-body{ padding:22px 26px 26px; }
+  .ticket-body p.desc{
+    color:var(--canvas-dim);
+    margin-bottom:16px;
+    max-width:620px;
+  }
+  .item-list{
+    list-style:none;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:10px 24px;
+  }
+  .item-list li{
+    font-size:0.95rem;
+    color:var(--canvas);
+    padding-left:18px;
+    position:relative;
+  }
+  .item-list li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--steel);
+  }
+  .ticket-note{
+    margin-top:18px;
+    font-size:0.85rem;
+    color:var(--steel);
+    font-style:italic;
+  }
+
+  /* ---------- TOOLS STRIP ---------- */
+  .tools-strip{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .tool-chip{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    border:1px solid var(--steel-dark);
+    padding:10px 18px;
+    color:var(--canvas-dim);
+  }
+
+  /* ---------- HOW BOOKING WORKS ---------- */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:0;
+    border:1px solid var(--line);
+  }
+  .step{
+    padding:32px 28px;
+    border-right:1px solid var(--line);
+    position:relative;
+  }
+  .step:last-child{ border-right:none; }
+  .step .num{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    color:var(--mustard);
+    font-size:0.85rem;
+    letter-spacing:0.1em;
+    display:block;
+    margin-bottom:14px;
+  }
+  .step h3{
+    font-size:1.1rem;
+    margin-bottom:10px;
+  }
+  .step p{
+    font-size:0.92rem;
+    color:var(--canvas-dim);
+  }
+
+  .booking-cta{
+    margin-top:36px;
+    display:flex;
+    align-items:center;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .booking-cta p{
+    color:var(--steel);
+    font-size:0.9rem;
+    max-width:380px;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-item{
+    border-bottom:1px solid var(--line);
+  }
+  .faq-item:first-child{ border-top:1px solid var(--line); }
+  .faq-q{
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    color:var(--canvas);
+    font-family:'Oswald', sans-serif;
+    font-size:1.05rem;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    font-weight:600;
+    padding:22px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+  }
+  .faq-q .plus{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--mustard);
+    font-size:1.3rem;
+    transition:transform 0.2s ease;
+    flex-shrink:0;
+    margin-left:20px;
+  }
+  .faq-item.open .faq-q .plus{ transform:rotate(45deg); }
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.25s ease;
+  }
+  .faq-a-inner{
+    padding-bottom:24px;
+    color:var(--canvas-dim);
+    max-width:680px;
+    font-size:0.96rem;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:48px 0 36px;
+  }
+  .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:24px;
+    flex-wrap:wrap;
+    margin-bottom:28px;
+  }
+  .footer-brand{
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
+    text-transform:uppercase;
+    font-size:1.1rem;
+    margin-bottom:8px;
+  }
+  .footer-brand span{ color:var(--mustard); }
+  footer .tagline{
+    color:var(--steel);
+    font-size:0.9rem;
+    max-width:340px;
+  }
+  .footer-contact{
+    text-align:right;
+  }
+  .footer-contact .label{ color:var(--mustard); display:block; margin-bottom:10px; }
+  .footer-contact a, .footer-contact p{
+    color:var(--canvas-dim);
+    font-size:0.92rem;
+    margin-bottom:4px;
+  }
+  .footer-bottom{
+    color:var(--steel-dark);
+    font-size:0.78rem;
+    font-family:'JetBrains Mono', monospace;
+    letter-spacing:0.04em;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 800px){
+    .hero .wrap{ grid-template-columns:1fr; gap:36px; }
+    .hero{ padding:56px 0 48px; }
+    .who-grid{ grid-template-columns:1fr; }
+    .steps{ grid-template-columns:1fr; }
+    .step{ border-right:none; border-bottom:1px solid var(--line); }
+    .step:last-child{ border-bottom:none; }
+    .item-list{ grid-template-columns:1fr; }
+    .footer-grid{ flex-direction:column; }
+    .footer-contact{ text-align:left; }
+    section.block{ padding:52px 0; }
+    .topbar nav a{ margin-left:16px; font-size:0.7rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<!--
+  ===========================================================
+  PRICING / SERVICE AREA — quick reference for future updates
+  ===========================================================
+  Flat rate (junk hauling):     $400 total  — search "tag-rust" ticket-head, and the FAQ answer below
+  Deposit:                      $50 (credited toward the $400 — customer pays $350 balance on completion)
+                                 — search "deposit-amount" (appears in Step 2 and the FAQ)
+  Service area:                 100 miles of Woodstock, NY — search "service-area"
+
+  NOTE: if the flat rate changes, remember to also update the $350 "balance due" figure
+  in the deposit FAQ and the pricing FAQ, since it's written as a fixed number, not a formula.
+  ===========================================================
+  STILL OPEN (not yet decided by the business):
+  - Customer-initiated cancellation/reschedule policy (FAQ currently has a placeholder)
+  - Phone number (footer currently says "coming soon")
+  ===========================================================
+-->
+
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="brand">HEAVY HAUL <span>BROTHERS</span></div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#faq">FAQ</a>
+        <a href="#book">Book Now</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="label hero-eyebrow service-area">Woodstock, NY · 100-Mile Service Area</span>
+        <h1>We Haul It <span class="accent">Away.</span></h1>
+        <p class="sub">Junk removal and free metal pickup based in Woodstock, NY — serving homes within 100 miles. Two guys, a truck, and a trailer — no nonsense, no surprises.</p>
+        <a href="#book" class="btn">Schedule A Pickup</a>
+      </div>
+      <div class="hero-photo">
+        <img src="images/hero-truck.jpg" alt="Truck bed loaded with scrap metal and junk ready for haul-away">
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE -->
+  <section class="block" id="who">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">Who We Are</span>
+        <h2>Two Guys Who Get It Done</h2>
+      </div>
+      <div class="who-grid">
+        <div class="who-photo">
+          <img src="images/who-we-are.jpg" alt="Binh and Trystan on a job site">
+        </div>
+        <div class="who-text">
+          <p>Heavy Haul Brothers is run by <strong>Binh and Trystan</strong> — not actual brothers, but close enough after years of friendship and a shared trailer.</p>
+          <p>We started this business with one idea: most people don't need a big company to haul their junk away, they just need two reliable guys with the right truck and tools to show up and get it done.</p>
+          <p>We're based in Woodstock, NY and serve homeowners within 100 miles — hauling junk for a flat fee, and picking up scrap metal and old cars for free.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="block" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">What We Offer</span>
+        <h2>Services & Pricing</h2>
+      </div>
+
+      <!-- JUNK HAULING -->
+      <div class="ticket">
+        <div class="ticket-head">
+          <h3>Junk Hauling</h3>
+          <span class="tag tag-rust">$400 Flat Rate</span>
+        </div>
+        <div class="ticket-body">
+          <p class="desc">We'll drive out to your property and haul away a full trailer-load for a flat $400, including:</p>
+          <ul class="item-list">
+            <li>Downed trees & yard debris</li>
+            <li>Old furniture & appliances</li>
+            <li>General junk & garbage</li>
+            <li>Tires <em>(extra dump fee applies)</em></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- METAL PICKUP -->
+      <div class="ticket">
+        <div class="ticket-head">
+          <h3>Metal & Car Pickup</h3>
+          <span class="tag tag-mustard">Free</span>
+        </div>
+        <div class="ticket-body">
+          <p class="desc">Got scrap metal or an old car taking up space? We'll haul it away at no charge — most metal qualifies.</p>
+          <ul class="item-list">
+            <li>Appliances & water heaters</li>
+            <li>Fencing, grills & mowers</li>
+            <li>Old or junk cars*</li>
+            <li>General scrap metal</li>
+          </ul>
+          <p class="ticket-note">*Signed release of ownership required for vehicle pickup.</p>
+        </div>
+      </div>
+
+      <!-- ADDITIONAL JOBS -->
+      <div class="ticket">
+        <div class="ticket-head">
+          <h3>Additional Jobs</h3>
+          <span class="tag tag-olive">By Quote</span>
+        </div>
+        <div class="ticket-body">
+          <p class="desc">Other hauling jobs we can take on:</p>
+          <ul class="item-list">
+            <li>Hauling wood</li>
+            <li>Hauling dirt</li>
+            <li>Hauling gravel</li>
+            <li>Light demo work</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TOOLS -->
+      <div style="margin-top:40px;">
+        <span class="label" style="color:var(--steel); display:block; margin-bottom:16px;">Equipment We Bring</span>
+        <div class="tools-strip">
+          <span class="tool-chip">Trailer</span>
+          <span class="tool-chip">Truck</span>
+          <span class="tool-chip">Chainsaw</span>
+          <span class="tool-chip">Reciprocating Saw</span>
+          <span class="tool-chip">Circular Saw</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW BOOKING WORKS -->
+  <section class="block" id="book">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">Booking</span>
+        <h2>How It Works</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="num">STEP 1</span>
+          <h3>Pick A Time</h3>
+          <p>Choose an open slot on our calendar — we run pickups on set days each week.</p>
+        </div>
+        <div class="step">
+          <span class="num">STEP 2</span>
+          <h3>Pay A $50 Deposit</h3>
+          <p>A small <span class="deposit-amount">$50</span> deposit confirms your spot — it goes toward your total, so you're not paying extra.</p>
+        </div>
+        <div class="step">
+          <span class="num">STEP 3</span>
+          <h3>We Show Up</h3>
+          <p>We arrive, load it up, and haul it away. That's it.</p>
+        </div>
+      </div>
+
+      <div class="booking-cta">
+        <a href="#" class="btn">Open Booking Calendar</a>
+        <p>You'll see real-time open slots and confirm with a small deposit — no account needed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">Questions</span>
+        <h2>Frequently Asked</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Do you really take metal for free?
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Yes. Most scrap metal and old/junk cars are picked up at no charge, as long as they meet a few basic requirements. Click "Schedule a Pickup" and let us know what you've got — we'll confirm it qualifies before your appointment.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What's the $50 deposit for?
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              A <span class="deposit-amount">$50</span> deposit confirms you're serious about the job so we don't waste a trip and a tank of gas on a pickup that doesn't pan out. It's not an extra charge — it's the first part of your <strong>$400</strong> total. You pay $50 to book, then the remaining $350 when the job is done.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What if I need to cancel or reschedule?
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              [Customer cancellation/reschedule policy to be finalized — e.g. free reschedule with 24 hours notice, deposit forfeited for no-shows.]
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What if you don't show up?
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              If we no-show for any reason, your $50 deposit is fully refunded — no questions asked.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What areas do you serve?
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              We're based in Woodstock, NY and serve homeowners within a <span class="service-area">100-mile radius</span> — covering most of the Hudson Valley and beyond.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How much does junk hauling cost?
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              We charge a flat <strong>$400</strong> to drive out and haul away one full trailer-load of junk, yard debris, or general garbage — a $50 deposit to book, and the remaining $350 due when the job's complete. Old tires can be included for an additional small dump fee.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">HEAVY HAUL <span>BROTHERS</span></div>
+          <p class="tagline">Junk removal & free metal pickup, based in Woodstock, NY — serving within 100 miles.</p>
+        </div>
+        <div class="footer-contact">
+          <span class="label">Get In Touch</span>
+          <p><a href="mailto:heavyhaulbros@gmail.com">heavyhaulbros@gmail.com</a></p>
+          <p style="color:var(--steel); font-size:0.85rem;">Phone number coming soon</p>
+          <p>Woodstock, NY</p>
+          <p style="color:var(--steel); font-size:0.85rem;">Serving a 100-mile radius</p>
+        </div>
+      </div>
+      <hr class="rule-thin">
+      <p class="footer-bottom" style="margin-top:20px;">© 2026 HEAVY HAUL BROTHERS. ALL RIGHTS RESERVED.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(btn){
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+
+      // close all
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+
+      // open this one if it wasn't already open
+      if(!isOpen){
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    }
+  </script>
+
+</body>
+</html>
