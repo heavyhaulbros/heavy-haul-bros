@@ -438,13 +438,15 @@
   ===========================================================
   PRICING / SERVICE AREA — quick reference for future updates
   ===========================================================
-  Flat rate (junk hauling):     $500 total  — search "tag-rust" ticket-head, and the FAQ answer below
-  Deposit:                      $50 (credited toward the $500 — customer pays $450 balance on completion)
-                                 — search "deposit-amount" (appears in Step 2 and the FAQ)
+  Flat rate (junk hauling):     $500 MINIMUM (not fixed) — actual price is quoted per job
+                                 — search "tag-rust" ticket-head, and the FAQ answer below
+  Deposit:                      $50 (credited toward total — at the $500 minimum, balance is $450;
+                                 larger/quoted jobs have a larger balance) — search "deposit-amount"
   Service area:                 100 miles of Kerhonkson, NY — search "service-area"
 
-  NOTE: if the flat rate changes, remember to also update the $450 "balance due" figure
-  in the deposit FAQ and the pricing FAQ, since it's written as a fixed number, not a formula.
+  NOTE: this is a MINIMUM, not a flat price — larger jobs get a custom quote.
+  The $450 figure only applies to jobs priced at exactly the $500 minimum.
+  If the minimum itself changes, update both the deposit FAQ and pricing FAQ accordingly.
   ===========================================================
 -->
 
@@ -539,6 +541,24 @@
         </div>
       </div>
 
+      <!-- MOVING -->
+      <div class="ticket">
+        <div class="ticket-head">
+          <h3>Moving Help</h3>
+          <span class="tag tag-olive">By Quote</span>
+        </div>
+        <div class="ticket-body">
+          <p class="desc">We're not a full-service moving company, but we can help move a reasonable amount of pre-boxed items, furniture, and appliances between locations. We bring the tools to disassemble furniture at pickup and reassemble it at delivery, plus moving blankets to protect everything in transit.</p>
+          <ul class="item-list">
+            <li>Pre-boxed household items</li>
+            <li>Furniture & beds</li>
+            <li>Household appliances</li>
+            <li>Disassembly & reassembly</li>
+          </ul>
+          <p class="ticket-note">We do not carry moving insurance — please let us know about any high-value or fragile items in advance.</p>
+        </div>
+      </div>
+
       <!-- ADDITIONAL JOBS -->
       <div class="ticket">
         <div class="ticket-head">
@@ -565,6 +585,8 @@
           <span class="tool-chip">Chainsaw</span>
           <span class="tool-chip">Reciprocating Saw</span>
           <span class="tool-chip">Circular Saw</span>
+          <span class="tool-chip">Moving Blankets</span>
+          <span class="tool-chip">Hand Tools</span>
         </div>
       </div>
 
@@ -627,12 +649,36 @@
 
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">
+            Do you really help with removing old vehicles for free?
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Yes. The only thing we need from you is a signed release of ownership for the vehicle.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Do you help with moving?
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              We're not a traditional moving company, but we can help move a reasonable amount of pre-boxed items, furniture, beds, and appliances. We bring tools to disassemble and reassemble furniture, plus moving blankets to keep things protected. We don't carry moving insurance, so let us know ahead of time about anything especially valuable or fragile. Submit a request and we'll quote the job.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
             What's the $50 deposit for?
             <span class="plus">+</span>
           </button>
           <div class="faq-a">
             <div class="faq-a-inner">
-              A <span class="deposit-amount">$50</span> deposit confirms you're serious about the job so we don't waste a trip and a tank of gas on a pickup that doesn't pan out. It's not an extra charge — it's the first part of your <strong>$500</strong> total. You pay $50 to book, then the remaining $450 when the job is done.
+              A <span class="deposit-amount">$50</span> deposit confirms you're serious about the job so we don't waste a trip and a tank of gas on a pickup that doesn't pan out. It's not an extra charge — it's the first part of your total. Junk hauling starts at a $500 minimum, so you'd pay $50 to book and at least $450 when the job is done (more for larger jobs, based on your quote).
             </div>
           </div>
         </div>
@@ -680,7 +726,19 @@
           </button>
           <div class="faq-a">
             <div class="faq-a-inner">
-              We charge a flat <strong>$500</strong> to drive out and haul away one full trailer-load of junk, yard debris, or general garbage — a $50 deposit to book, and the remaining $450 due when the job's complete. Old tires can be included for an additional small dump fee.
+              We'll provide a quote when you contact us with your job details. Junk hauling starts at a minimum flat <strong>$500</strong> for one full trailer-load of junk, yard debris, or general garbage — a $50 deposit to book, with the rest due when the job's complete (at the $500 minimum, that's $450; larger jobs are quoted accordingly). Old tires can be included for an additional small dump fee.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What if I have more items or garbage to get rid of than will fit in your trailer?
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              We will provide you with a quote for the entire job beforehand and tackle it in multiple trips.
             </div>
           </div>
         </div>
